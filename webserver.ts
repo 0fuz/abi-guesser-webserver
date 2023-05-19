@@ -5,6 +5,9 @@ import {AbiCoder} from "ethers";
 import {guessFragment} from "@openchainxyz/abi-guesser";
 
 const port = 3001
+const host = '127.0.0.1'
+// const host = '0.0.0.0'
+
 const app = express()
 app.use(express.json());
 
@@ -52,9 +55,6 @@ app.post("/guesser", (req: Request, res: Response) => {
     return res.json(result)
 })
 
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log("Server listening on port ", port)
 })
-
-
-// pm2 start "npx ts-node ./webserver-test.ts" --name test -i 4 -- start
